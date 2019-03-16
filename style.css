@@ -1,0 +1,136 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+
+/*SECTION GAME TITLE*/
+
+#game-title {
+    background-color: #393e46;
+    height: 11rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#game-title h1 {
+    margin-top: 2rem;
+    font-weight: 900;
+    font-size: 5.5rem;
+    color: #eeeeee;
+    letter-spacing: 0.5rem;
+}
+
+
+
+/*SECTION GAME BODY*/
+
+#game-body {
+    background-color: #eeeeee;
+}
+
+#time-counter {
+    padding: 2.2rem 0;
+    text-align: center;
+    color: #00adb5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.img-boxes {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 2rem;
+}
+
+.img-box {
+    height: 105px;
+    width: 105px;
+    background-color: #33313b;
+    opacity: 0.85;
+    margin: 0 1.5rem;
+    border: 5px solid #00adb5;
+    border-radius: 20%;
+    background: url(images/1.png) center;
+}
+
+#img-2 {
+    background: url(images/question.png) center;
+}
+
+#img-3 {
+    background: url(images/2.png) center;
+}
+
+#img-4 {
+    background: url(images/3.png) center;
+}
+
+#img-5 {
+    background: url(images/4.png) center;
+}
+
+#img-6 {
+    background: url(images/5.png) center;
+}
+
+#img-7 {
+    background: url(images/6.png) center;
+}
+
+#img-8 {
+    background: url(images/7.png) center;
+}
+
+#img-9 {
+    background: url(images/8.png) center;
+}
+
+#img-10 {
+    background: url(images/9.png) center;
+}
+
+#img-11 {
+    background: url(images/10.png) center;
+}
+
+
+
+
+/*footer section*/
+
+#footer {
+    background-color: #222831;
+    padding: 0.6% 10%;
+    text-align: center;
+    color: white;
+
+}
+
+.copyright {
+    margin: 0;
+    font-weight: 500;
+    position: relative;
+    left: 15px
+}
+
+#footer li {
+    text-decoration: none;
+    display: inline-block;
+}
+
+#footer ul {
+    margin: 0;
+}
+
+.social-icon {
+    margin: 20px 10px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.social-icon:hover {
+    opacity: 0.7;
+}
