@@ -60,10 +60,7 @@ body {
     transform: rotateY(180deg);
 }
 
-.back {
-    background: url(images/question.png) center;
 
-}
 
 #img-1 {
     /*    background: url(images/img-1.png) center;*/
@@ -122,7 +119,10 @@ body {
 }
 
 
+.back {
+    background: url(images/question.png) center;
 
+}
 
 /*footer section*/
 
