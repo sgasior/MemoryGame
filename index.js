@@ -1,6 +1,8 @@
 var gamePattern = ["img-0", "img-1", "img-2", "img-3", "img-4", "img-5", "img-6", "img-7", "img-8", "img-9", "img-0", "img-1", "img-2", "img-3", "img-4", "img-5", "img-6", "img-7", "img-8", "img-9"];
 var playerFirstChoice = "";
 var playerSecondChoice = "";
+var started = false;
+
 
 //EVENT LISTENERS
 
@@ -14,6 +16,18 @@ $(".img-box").click(function () {
     //    TODO
     //    checkRound();
 })
+
+/**
+ * Listening if user clicked any key
+ * Starting game
+ */
+$(document).keydown(function () {
+    if (!started) {
+        started = true;
+        startGame();
+    }
+});
+
 
 // END OF EVENT LISTENERS
 
@@ -109,5 +123,3 @@ function startGame() {
     shuffleArray(gamePattern);
     flipAllImages();
 }
-
-startGame();
