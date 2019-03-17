@@ -53,47 +53,72 @@ body {
     margin: 0 1.5rem;
     border: 5px solid #00adb5;
     border-radius: 20%;
-    background: url(images/1.png) center;
+    transition: transform 1s;
+}
+
+.img-box.flip {
+    transform: rotateY(180deg);
+}
+
+.back {
+    background: url(images/question.png) center;
+
+}
+
+#img-1 {
+    /*    background: url(images/img-1.png) center;*/
 }
 
 #img-2 {
-    background: url(images/question.png) center;
+    /*    background: url(images/img-2.png) center;*/
 }
 
 #img-3 {
-    background: url(images/2.png) center;
+    /*    background: url(images/img-3.png) center;*/
 }
 
 #img-4 {
-    background: url(images/3.png) center;
+    /*    background: url(images/img-4.png) center;*/
 }
 
 #img-5 {
-    background: url(images/4.png) center;
+    /*    background: url(images/img-5.png) center;*/
 }
 
 #img-6 {
-    background: url(images/5.png) center;
+    /*    background: url(images/img-6.png) center;*/
 }
 
 #img-7 {
-    background: url(images/6.png) center;
+    /*    background: url(images/img-7.png) center;*/
 }
 
 #img-8 {
-    background: url(images/7.png) center;
+    /*    background: url(images/img-8.png) center;*/
 }
 
 #img-9 {
-    background: url(images/8.png) center;
+    /*    background: url(images/img-9.png) center;*/
 }
 
 #img-10 {
-    background: url(images/9.png) center;
+    /*    background: url(images/img-10.png) center;*/
 }
 
 #img-11 {
-    background: url(images/10.png) center;
+    /*    background: url(images/question.png) center;*/
+}
+
+#img-12 {
+    /*    background: url(images/question.png) center;*/
+}
+
+#img-12 {
+    /*    background: url(images/question.png) center;*/
+}
+
+#img-11 {
+    /*    background: url(images/question.png) center;*/
 }
 
 
