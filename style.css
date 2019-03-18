@@ -56,10 +56,11 @@ body {
     transition: transform 1s;
 }
 
-.img-box:hover{
+.img-box:hover {
     opacity: 0.7;
     cursor: pointer;
 }
+
 .img-box.flip {
     transform: rotateY(180deg);
 }
@@ -162,4 +163,44 @@ body {
 
 .social-icon:hover {
     opacity: 0.7;
+}
+
+
+
+@media (max-width: 941px) {
+    .img-box {
+        margin: 0 0.2rem;
+    }
+
+}
+
+
+@media (max-width: 733px) {
+    .img-box {
+        transform: scale(0.9);
+        margin: -0.5rem 0rem;
+    }
+
+    #game-title h1 {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 3.5rem;
+    }
+}
+
+
+@media (max-width: 701px) {
+
+    .img-boxes {
+        transform: scale(0.45);
+    }
+    .img-box {
+        margin: -2rem -0.2rem;
+    }
+
+    #game-title h1 {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 3rem;
+    }
 }
