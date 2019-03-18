@@ -76,8 +76,6 @@ function checkRound(imageID) {
 }
 
 function resetRound(){
-
-
     setTimeout(function () {
         playerFirstChoice = ["",""];
         playerSecondChoice = ["",""];
@@ -86,13 +84,22 @@ function resetRound(){
 
 }
 
-
+/**
+ * Return number from imageID
+ * example if imageID is img-7 then the return is 7
+ */
 function getNumberFromId(imageID){
     if (imageID.length === 5) {
         return  imageID.substr(imageID.length - 1, imageID.length);
     } else {
         return imageID.substr(imageID.length - 2, imageID.length);
     }
+}
+
+
+function playSound(name) {
+    var audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();
 }
 
 
@@ -207,12 +214,8 @@ function openingPage(){
 
     //disable clicking images
     // commented OUT only FOR DEV purpose
-    // $(".img-box").disableClick(true);
+    //$(".img-box").disableClick(true);
 }
-
-openingPage();
-// $(".img-box").disableClick(true);
-// $(".img-box").disableClick(false);
 
 
 // startGame() is invoked by clicking a key
@@ -231,4 +234,6 @@ function updateScoreHeader(){
         $("h2").text("Total score: "+score);
 }
 
+
+openingPage();
 
