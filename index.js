@@ -1,9 +1,9 @@
 var gamePattern = ["img-0", "img-1", "img-2", "img-3", "img-4", "img-5", "img-6", "img-7", "img-8", "img-9", "img-0", "img-1", "img-2", "img-3", "img-4", "img-5", "img-6", "img-7", "img-8", "img-9"];
-var playerFirstChoice = ["",""]; // element [0] is gamePattern and element [1] is imageID
-var playerSecondChoice = ["",""]; // element [0] is gamePattern and element [1] is imageID
-var winRoundCounter=0;
+var playerFirstChoice = ["", ""]; // element [0] is gamePattern and element [1] is imageID
+var playerSecondChoice = ["", ""]; // element [0] is gamePattern and element [1] is imageID
+var winRoundCounter = 0;
 var started = false;
-var score= 0;
+var score = 0;
 //EVENT LISTENERS
 
 /**
@@ -33,28 +33,26 @@ $(document).keydown(function () {
 function checkRound(imageID) {
 
 
-    if (playerFirstChoice[0].length==0){
+    if (playerFirstChoice[0].length == 0) {
         playSound("pick");
-        playerFirstChoice[0]= gamePattern[getNumberFromId(imageID)];
+        playerFirstChoice[0] = gamePattern[getNumberFromId(imageID)];
         playerFirstChoice[1] = imageID;
-        $("#"+imageID).disableClick(true);
-    }
-    else {
-        playerSecondChoice[0]= gamePattern[getNumberFromId(imageID)];
+        $("#" + imageID).disableClick(true);
+    } else {
+        playerSecondChoice[0] = gamePattern[getNumberFromId(imageID)];
         playerSecondChoice[1] = imageID;
 
         // disable clicking more images (only two images in 1 round)
         $(".img-box").disableClick(true); // enable clicking images
 
-        if (playerFirstChoice[0]===playerSecondChoice[0]){
+        if (playerFirstChoice[0] === playerSecondChoice[0]) {
             playSound("successful");
-            winRoundCounter+=1;
-            score +=3;
+            winRoundCounter += 1;
+            score += 3;
 
-        }
-        else{
+        } else {
             playSound("wrong");
-            score -=1;
+            score -= 1;
             setTimeout(function () {
                 flipImage(playerSecondChoice[1]);
             }, 1200);
@@ -63,23 +61,23 @@ function checkRound(imageID) {
                 flipImage(playerFirstChoice[1]);
             }, 600);
         }
-        if (winRoundCounter===10){
+        if (winRoundCounter === 10) {
             $(".img-box").disableClick(true);
-            $("h2").text("Contragulations! You scored "+score+" points.");
-        }
-        else{
+            $("h2").text("Contragulations! You scored " + score + " points.");
+        } else {
             updateScoreHeader();
+            resetRound();
         }
 
-        resetRound();
+
     }
 
 }
 
-function resetRound(){
+function resetRound() {
     setTimeout(function () {
-        playerFirstChoice = ["",""];
-        playerSecondChoice = ["",""];
+        playerFirstChoice = ["", ""];
+        playerSecondChoice = ["", ""];
         $(".img-box").disableClick(false);
     }, 1500);
 
@@ -89,9 +87,9 @@ function resetRound(){
  * Return number from imageID
  * example if imageID is img-7 then the return is 7
  */
-function getNumberFromId(imageID){
+function getNumberFromId(imageID) {
     if (imageID.length === 5) {
-        return  imageID.substr(imageID.length - 1, imageID.length);
+        return imageID.substr(imageID.length - 1, imageID.length);
     } else {
         return imageID.substr(imageID.length - 2, imageID.length);
     }
@@ -108,19 +106,18 @@ function playSound(name) {
  * Temporary disable onclick and jQuery click events
  * example $(".img-box").disableClick(true)
  */
-$.fn.disableClick = function (disable){
-    this.each(function() {
-        if(disable){
-            if(this.onclick)
+$.fn.disableClick = function (disable) {
+    this.each(function () {
+        if (disable) {
+            if (this.onclick)
                 $(this).data('onclick', this.onclick).removeAttr('onclick');
-            if($._data(this, 'events') && $._data(this, 'events').click)
+            if ($._data(this, 'events') && $._data(this, 'events').click)
                 $(this).data('click', $.extend(true, {}, $._data(this, 'events').click)).off('click');
-        }
-        else{
-            if($(this).data('onclick'))
+        } else {
+            if ($(this).data('onclick'))
                 this.onclick = $(this).data('onclick');
-            if($(this).data('click'))
-                for(var i in $(this).data('click'))
+            if ($(this).data('click'))
+                for (var i in $(this).data('click'))
                     $(this).on('click', $(this).data('click')[i].handler);
         }
     });
@@ -132,7 +129,7 @@ $.fn.disableClick = function (disable){
  * Flip images by their id (in turn: front and back side).
  */
 function flipImage(imageID) {
-    var numberOfId =getNumberFromId(imageID);
+    var numberOfId = getNumberFromId(imageID);
     $(document).ready(function () {
         document.querySelector("#" + imageID).classList.toggle("flip");
         var frontImg = "url(images/" + gamePattern[numberOfId] + ".png)" + " center";
@@ -211,11 +208,9 @@ function shuffleArray(array) {
 /**
  * Method called when site is opened first time
  */
-function openingPage(){
+function openingPage() {
 
-    //disable clicking images
-    // commented OUT only FOR DEV purpose
-    //$(".img-box").disableClick(true);
+    $(".img-box").disableClick(true);
 }
 
 
@@ -226,15 +221,14 @@ function startGame() {
     $(".img-box").disableClick(false); // enable clicking images
 
     setTimeout(function () {
-    updateScoreHeader();
-    },3500);
+        updateScoreHeader();
+    }, 3500);
 }
 
 
-function updateScoreHeader(){
-        $("h2").text("Total score: "+score);
+function updateScoreHeader() {
+    $("h2").text("Total score: " + score);
 }
 
 
 openingPage();
-
