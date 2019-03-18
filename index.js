@@ -218,10 +218,9 @@ function openingPage() {
 function startGame() {
     shuffleArray(gamePattern);
     flipAllImages();
-    $(".img-box").disableClick(false); // enable clicking images
-
     setTimeout(function () {
         updateScoreHeader();
+        $(".img-box").disableClick(false);
     }, 3500);
 }
 
