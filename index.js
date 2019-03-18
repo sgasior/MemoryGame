@@ -1,9 +1,9 @@
 var gamePattern = ["img-0", "img-1", "img-2", "img-3", "img-4", "img-5", "img-6", "img-7", "img-8", "img-9", "img-0", "img-1", "img-2", "img-3", "img-4", "img-5", "img-6", "img-7", "img-8", "img-9"];
-var playerFirstChoice = "";
-var playerSecondChoice = "";
+var playerFirstChoice = ["",""]; // element [0] is gamePattern and element [1] is imageID
+var playerSecondChoice = ["",""]; // element [0] is gamePattern and element [1] is imageID
+var winRoundCounter=0;
 var started = false;
-
-
+var score= 0;
 //EVENT LISTENERS
 
 /**
@@ -13,9 +13,9 @@ var started = false;
 $(".img-box").click(function () {
     var userChosenImg = this.id;
     flipImage(userChosenImg);
-    //    TODO
-    //    checkRound();
+    checkRound(userChosenImg);
 })
+
 
 /**
  * Listening if user clicked any key
@@ -29,6 +29,71 @@ $(document).keydown(function () {
 });
 
 // END OF EVENT LISTENERS
+
+function checkRound(imageID) {
+
+
+    if (playerFirstChoice[0].length==0){
+        playerFirstChoice[0]= gamePattern[getNumberFromId(imageID)];
+        playerFirstChoice[1] = imageID;
+        $("#"+imageID).disableClick(true);
+    }
+    else {
+        playerSecondChoice[0]= gamePattern[getNumberFromId(imageID)];
+        playerSecondChoice[1] = imageID;
+
+        // disable clicking more images (only two images in 1 round)
+        $(".img-box").disableClick(true); // enable clicking images
+
+        if (playerFirstChoice[0]===playerSecondChoice[0]){
+            console.log("win");
+            winRoundCounter+=1;
+            score +=3;
+
+        }
+        else{
+            console.log("lose");
+            score -=1;
+            setTimeout(function () {
+                flipImage(playerSecondChoice[1]);
+            }, 1200);
+
+            setTimeout(function () {
+                flipImage(playerFirstChoice[1]);
+            }, 600);
+        }
+        if (winRoundCounter===10){
+            $(".img-box").disableClick(true);
+            $("h2").text("Contragulations! You scored "+score+" points.");
+        }
+        else{
+            updateScoreHeader();
+        }
+
+        resetRound();
+    }
+
+}
+
+function resetRound(){
+
+
+    setTimeout(function () {
+        playerFirstChoice = ["",""];
+        playerSecondChoice = ["",""];
+        $(".img-box").disableClick(false);
+    }, 1500);
+
+}
+
+
+function getNumberFromId(imageID){
+    if (imageID.length === 5) {
+        return  imageID.substr(imageID.length - 1, imageID.length);
+    } else {
+        return imageID.substr(imageID.length - 2, imageID.length);
+    }
+}
 
 
 /**
@@ -59,19 +124,13 @@ $.fn.disableClick = function (disable){
  * Flip images by their id (in turn: front and back side).
  */
 function flipImage(imageID) {
-    if (imageID.length === 5) {
-        var numberOfId = imageID.substr(imageID.length - 1, imageID.length);
-    } else {
-        var numberOfId = imageID.substr(imageID.length - 2, imageID.length);
-    }
+    var numberOfId =getNumberFromId(imageID);
     $(document).ready(function () {
         document.querySelector("#" + imageID).classList.toggle("flip");
         var frontImg = "url(images/" + gamePattern[numberOfId] + ".png)" + " center";
         var backImg = "url(images/question.png) center";
 
 
-        console.log("dla imageId= " + imageID + " frontImg= " + frontImg + " backImg= " + backImg);
-        console.log("number of id= " + numberOfId + " gamePatern(...)" + gamePattern[numberOfId]);
         flipSelect = $("#" + imageID);
 
         if (flipSelect.css("background-image").includes(gamePattern[numberOfId])) {
@@ -147,7 +206,8 @@ function shuffleArray(array) {
 function openingPage(){
 
     //disable clicking images
-    $(".img-box").disableClick(true);
+    // commented OUT only FOR DEV purpose
+    // $(".img-box").disableClick(true);
 }
 
 openingPage();
@@ -159,8 +219,16 @@ openingPage();
 function startGame() {
     shuffleArray(gamePattern);
     flipAllImages();
-
     $(".img-box").disableClick(false); // enable clicking images
+
+    setTimeout(function () {
+    updateScoreHeader();
+    },3500);
+}
+
+
+function updateScoreHeader(){
+        $("h2").text("Total score: "+score);
 }
 
 

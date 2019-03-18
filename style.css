@@ -31,7 +31,7 @@ body {
     background-color: #eeeeee;
 }
 
-#time-counter {
+#point-counter {
     padding: 2.2rem 0;
     text-align: center;
     color: #00adb5;
@@ -56,6 +56,10 @@ body {
     transition: transform 1s;
 }
 
+.img-box:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
 .img-box.flip {
     transform: rotateY(180deg);
 }
