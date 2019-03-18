@@ -34,6 +34,7 @@ function checkRound(imageID) {
 
 
     if (playerFirstChoice[0].length==0){
+        playSound("pick");
         playerFirstChoice[0]= gamePattern[getNumberFromId(imageID)];
         playerFirstChoice[1] = imageID;
         $("#"+imageID).disableClick(true);
@@ -46,13 +47,13 @@ function checkRound(imageID) {
         $(".img-box").disableClick(true); // enable clicking images
 
         if (playerFirstChoice[0]===playerSecondChoice[0]){
-            console.log("win");
+            playSound("successful");
             winRoundCounter+=1;
             score +=3;
 
         }
         else{
-            console.log("lose");
+            playSound("wrong");
             score -=1;
             setTimeout(function () {
                 flipImage(playerSecondChoice[1]);
