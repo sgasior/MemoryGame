@@ -6,6 +6,10 @@ body {
     padding: 0;
 }
 
+.row {
+    margin: 0;
+}
+
 
 /*SECTION GAME TITLE*/
 
@@ -66,64 +70,6 @@ body {
 }
 
 
-
-#img-1 {
-    /*    background: url(images/img-1.png) center;*/
-}
-
-#img-2 {
-    /*    background: url(images/img-2.png) center;*/
-}
-
-#img-3 {
-    /*    background: url(images/img-3.png) center;*/
-}
-
-#img-4 {
-    /*    background: url(images/img-4.png) center;*/
-}
-
-#img-5 {
-    /*    background: url(images/img-5.png) center;*/
-}
-
-#img-6 {
-    /*    background: url(images/img-6.png) center;*/
-}
-
-#img-7 {
-    /*    background: url(images/img-7.png) center;*/
-}
-
-#img-8 {
-    /*    background: url(images/img-8.png) center;*/
-}
-
-#img-9 {
-    /*    background: url(images/img-9.png) center;*/
-}
-
-#img-10 {
-    /*    background: url(images/img-10.png) center;*/
-}
-
-#img-11 {
-    /*    background: url(images/question.png) center;*/
-}
-
-#img-12 {
-    /*    background: url(images/question.png) center;*/
-}
-
-#img-12 {
-    /*    background: url(images/question.png) center;*/
-}
-
-#img-11 {
-    /*    background: url(images/question.png) center;*/
-}
-
-
 .back {
     background: url(images/question.png) center;
 
@@ -133,7 +79,8 @@ body {
 
 #footer {
     background-color: #222831;
-    padding: 0.6% 10%;
+    padding: 1.45rem 2rem;
+    ;
     text-align: center;
     color: white;
 

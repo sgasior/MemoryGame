@@ -79,7 +79,7 @@ function resetRound() {
         playerFirstChoice = ["", ""];
         playerSecondChoice = ["", ""];
         $(".img-box").disableClick(false);
-    }, 1500);
+    }, 1300);
 
 }
 
@@ -139,13 +139,9 @@ function flipImage(imageID) {
         flipSelect = $("#" + imageID);
 
         if (flipSelect.css("background-image").includes(gamePattern[numberOfId])) {
-            setTimeout(function () {
-                flipSelect.css("background", backImg);
-            }, 300)
+            flipSelect.css("background", backImg);
         } else {
-            setTimeout(function () {
-                flipSelect.css("background", frontImg);
-            }, 300)
+            flipSelect.css("background", frontImg);
         }
     });
 }
@@ -158,28 +154,11 @@ function flipAllImages() {
 
     // show and hide images (2 operations)
     var counter = 0;
-
     var run = setInterval(function () {
 
         $(".img-box").each(function () {
             var imageID = this.id;
-
-            if (imageID.length === 5) {
-                var numberOfId = imageID.substr(imageID.length - 1, imageID.length);
-            } else {
-                var numberOfId = imageID.substr(imageID.length - 2, imageID.length);
-            }
-
-            document.querySelector("#" + imageID).classList.toggle("flip");
-            var frontImg = "url(images/" + gamePattern[numberOfId] + ".png)" + " center";
-            var backImg = "url(images/question.png) center";
-            flipSelect = $("#" + imageID);
-
-            if (flipSelect.css("background-image").includes(gamePattern[numberOfId])) {
-                flipSelect.css("background", backImg);
-            } else {
-                flipSelect.css("background", frontImg);
-            }
+            flipImage(imageID);
         })
         counter = counter + 1;
         if (counter === 2) {
@@ -209,7 +188,7 @@ function shuffleArray(array) {
  * Method called when site is opened first time
  */
 function openingPage() {
-
+    //only for dev puprose commented
     $(".img-box").disableClick(true);
 }
 
@@ -221,7 +200,7 @@ function startGame() {
     setTimeout(function () {
         updateScoreHeader();
         $(".img-box").disableClick(false);
-    }, 3500);
+    }, 3700);
 }
 
 
