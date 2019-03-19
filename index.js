@@ -63,7 +63,7 @@ function checkRound(imageID) {
         }
         if (winRoundCounter === 10) {
             $(".img-box").disableClick(true);
-            $("h2").text("Contragulations! You scored " + score + " points.");
+            $("h2").text("Congratulations! You scored " + score + " points.");
         } else {
             updateScoreHeader();
             resetRound();
