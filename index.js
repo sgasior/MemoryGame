@@ -4,6 +4,7 @@ var playerSecondChoice = ["", ""]; // element [0] is gamePattern and element [1]
 var winRoundCounter = 0;
 var started = false;
 var score = 0;
+var notBlockedImagesId = ["img-0", "img-1", "img-2", "img-3", "img-4", "img-5", "img-6", "img-7", "img-8", "img-9", "img-10", "img-11", "img-12", "img-13", "img-14", "img-15", "img-16", "img-17", "img-18", "img-19"];
 //EVENT LISTENERS
 
 /**
@@ -47,6 +48,8 @@ function checkRound(imageID) {
 
         if (playerFirstChoice[0] === playerSecondChoice[0]) {
             playSound("successful");
+            remove(notBlockedImagesId, playerFirstChoice[1]);
+            remove(notBlockedImagesId, playerSecondChoice[1])
             winRoundCounter += 1;
             score += 3;
 
@@ -78,10 +81,25 @@ function resetRound() {
     setTimeout(function () {
         playerFirstChoice = ["", ""];
         playerSecondChoice = ["", ""];
-        $(".img-box").disableClick(false);
+        enableClick(notBlockedImagesId);
     }, 1300);
 
 }
+
+function enableClick(notBlockedImagesId) {
+    for (i = 0; i < notBlockedImagesId.length; i++) {
+        $("#" + notBlockedImagesId[i]).disableClick(false);
+    }
+}
+
+function remove(array, element) {
+    const index = array.indexOf(element);
+
+    if (index !== -1) {
+        array.splice(index, 1);
+    }
+}
+
 
 /**
  * Return number from imageID
